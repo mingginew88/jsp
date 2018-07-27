@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+
+<mapper namespace="attachment">
+	<select id="getAttachmentOfArticle" parameterType="Integer" resultType="attachmentVo">
+		SELECT *
+		FROM   ATTACHMENT
+		WHERE  ARTICLE_NO = #{article_no}
+	</select>
+	
+	
+	<delete id="deleteAttachment" parameterType="Integer">
+		DELETE FROM ATTACHMENT 
+		WHERE ATTACH_NO = #{attach_no}
+	</delete>
+	
+	
+	<select id="getAttachment" parameterType="Integer" resultType="attachmentVo">
+		SELECT *
+		FROM   ATTACHMENT 
+		WHERE  ATTACH_NO = #{attach_no}
+	</select>
+	
+
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<select id="checkMember" resultType="int" parameterType="memberVo">
+		SELECT COUNT(*) 
+		FROM   MEMBER 
+		WHERE  MEM_ID = #{mem_id}
+		AND    MEM_PW = #{mem_pw} 
+	</select>
+	
+	<insert id="joinMember"  parameterType="memberVo">
+		INSERT INTO MEMBER(MEM_ID
+                   ,MEM_NAME
+                   ,MEM_PW
+                   ,MEM_EMAIL
+                   ,MEM_TEL
+                   ,MEM_ADDR1
+                   ,MEM_ADDR2
+                   ,MEM_JOINDATE
+                   ) 
+            VALUES(#{mem_id}
+                  ,#{mem_name}
+                  ,#{mem_pw}
+                  ,#{mem_email}
+                  ,#{mem_tel}
+                  ,#{mem_addr1}
+                  ,#{mem_addr2}
+                  ,sysdate
+                  )
+	</insert>
+	
+	
+	<select id="getMemberInfo" parameterType="String" resultType="memberVo">
+		SELECT * 
+		FROM   MEMBER 
+		WHERE  MEM_ID = #{mem_id}
+	</select>
+
+	
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="reply">
+
+	<insert id="addReply" parameterType="replyVo">
+		INSERT INTO REPLY(REPLY_NO
+						 ,REPLY_WRITER
+						 ,REPLY_DATE
+						 ,REPLY_CONTENT
+						 ,REPLY_DEL_CONFIRM
+						 ,ARTICLE_NO
+						 ,MEM_ID
+						 ) 
+				   VALUES(reply_no_seq.nextVal
+				   		 ,#{reply_writer}
+						 ,sysdate
+						 ,#{reply_content}
+						 ,#{reply_del_confirm}
+						 ,#{article_no}
+						 ,#{mem_id}
+				 		 )
+	</insert>
+	
+	
+	<select id="getAllReplyOfArticleNo" parameterType="Integer" resultType="replyVo">
+		SELECT * 
+		FROM   REPLY 
+		WHERE ARTICLE_NO = #{article_no}	
+	</select>
+	
+	
+	<update id="deleteReply" parameterType="Integer">
+		UPDATE REPLY 
+		SET	   REPLY_DEL_CONFIRM = 'Y'
+		WHERE  REPLY_NO = #{reply_no}
+	</update>
+
+
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="syj.login.model.MemberVo" alias="memberVo"/>
+		<typeAlias type="syj.board.model.BoardVo" alias="boardVo"/>
+		<typeAlias type="syj.article.model.ArticleVo" alias="articleVo"/>
+		<typeAlias type="syj.reply.model.ReplyVo" alias="replyVo"/>
+		<typeAlias type="syj.attachment.model.AttachmentVo" alias="attachmentVo"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+				<property name="username" value="test" />
+				<property name="password" value="java" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="syj/mybatis/mapper/member.xml"/>
+		<mapper resource="syj/mybatis/mapper/board.xml"/>
+		<mapper resource="syj/mybatis/mapper/article.xml"/>
+		<mapper resource="syj/mybatis/mapper/reply.xml"/>
+		<mapper resource="syj/mybatis/mapper/attachment.xml"/>
+	</mappers>
+	
+	
+</configuration>
